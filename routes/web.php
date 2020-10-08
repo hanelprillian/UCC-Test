@@ -16,3 +16,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'v1'], function () use ($router) {
+    $router->group(['prefix' => 'vehicle'], function () use ($router) {
+        $router->get('/', ['uses' => 'VehicleController@index']);
+        $router->post('save', ['uses' => 'VehicleController@store']);
+    });
+});
