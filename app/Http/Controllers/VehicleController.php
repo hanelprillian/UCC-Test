@@ -67,10 +67,10 @@ class VehicleController extends ApiController
         {
             DB::transaction(function() use ($request, $input)
             {
-                if($input->displacement_unit == Vehicle::UNIT_CUBIC_INCH)
-                    $input->engine_displacement = pow($input->bore,2) * 0.7854 * $input->stroke * 0.001 * $input->cylinders;
-                else if($input->displacement_unit == Vehicle::UNIT_CUBIC_CM)
-                    $input->engine_displacement = pow($input->bore,2) * 0.7854 * $input->stroke * $input->cylinders;
+                if($input['displacement_unit'] == Vehicle::UNIT_CUBIC_CM)
+                    $input['engine_displacement'] = pow($input['bore'],2) * 0.7854 * $input['stroke'] * 0.001 * $input['cylinders'];
+                else if($input['displacement_unit'] == Vehicle::UNIT_CUBIC_INCH)
+                    $input['engine_displacement'] = pow($input['bore'],2) * 0.7854 * $input['stroke'] * $input['cylinders'];
 
                 $vehicle = Vehicle::create($input);
 
