@@ -63,24 +63,26 @@ class VehicleController extends ApiController
         if ($validator->fails())
             return response()->json($validator->errors(), 422);
 
+        DB::beginTransaction();
+
         try
         {
-            DB::transaction(function() use ($request, $input)
-            {
-                if($input['displacement_unit'] == Vehicle::UNIT_CUBIC_CM)
-                    $input['engine_displacement'] = pow($input['bore'],2) * 0.7854 * $input['stroke'] * 0.001 * $input['cylinders'];
-                else if($input['displacement_unit'] == Vehicle::UNIT_CUBIC_INCH)
-                    $input['engine_displacement'] = pow($input['bore'],2) * 0.7854 * $input['stroke'] * $input['cylinders'];
+            if($input['displacement_unit'] == Vehicle::UNIT_CUBIC_CM)
+                $input['engine_displacement'] = pow($input['bore'],2) * 0.7854 * $input['stroke'] * 0.001 * $input['cylinders'];
+            else if($input['displacement_unit'] == Vehicle::UNIT_CUBIC_INCH)
+                $input['engine_displacement'] = pow($input['bore'],2) * 0.7854 * $input['stroke'] * $input['cylinders'];
 
-                $vehicle = Vehicle::create($input);
+            $vehicle = Vehicle::create($input);
 
-                $vehicle = $vehicle->fresh();
+            $vehicle = $vehicle->fresh();
 
-                return $this->respondCreated($vehicle->toArray());
-            });
+            DB::commit();
+
+            return $this->respondCreated($vehicle->toArray());
         }
         catch (Exception $exception)
         {
+            DB::rollBack();
             return $this->respondInternalError($message = 'Internal Server Error!', $errors = $exception);
         }
 
