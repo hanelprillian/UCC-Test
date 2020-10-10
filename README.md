@@ -22,7 +22,7 @@ Run lumen by this command \
 then migrate the database\
 `php artisan migrate`
 
-##Run Backend Unit Testing
+## Run Backend Unit Testing
 Run testing by this command \
 `phpunit` or `php vendor/phpunit/phpunit/phpunit`
 
@@ -36,6 +36,6 @@ Run testing by this command \
 if you want to change BASE API in frontend, goto file `src\main.js` and change \
 `window.BASE_API = 'http://localhost:8000/v1/'`
 
-##Run Frontend Unit Testing
+## Run Frontend Unit Testing
 Run testing by this command \
 `npm run test`
