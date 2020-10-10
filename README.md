@@ -14,6 +14,7 @@ Its my result for fullfill the UnderCapital test requirement
 - rename `.env.example` to `.env `
 - run `composer install`
 - create database called `ucctest`
+
 ##Run Backend
 Run lumen by this command \
 `php -S localhost:8000 -t public`
