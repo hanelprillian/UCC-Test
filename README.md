@@ -1,24 +1,40 @@
-# Lumen PHP Framework
+# UCC Test
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+Its my result for fullfill the UnderCapital test requirement
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Tools
 
-## Official Documentation
+- Lumen
+- VueJS
+- Bootstrap View
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## Installing Backend API
 
-## Contributing
+- Clone `git clone git@github.com:hanelprillian/UCC-Test.git`
+- rename `.env.example` to `.env `
+- run `composer install`
+- create database called `ucctest`
+##Run Backend
+Run lumen by this command \
+`php -S localhost:8000 -t public`
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+then migrate the database\
+`php artisan migrate`
 
-## Security Vulnerabilities
+##Run Backend Unit Testing
+Run testing by this command \
+`phpunit` or `php vendor/phpunit/phpunit/phpunit`
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## Installing Frontend
 
-## License
+- goto folder `frontend`
+- run command `npm install` to install dependencies
+- run commit `npm run dev` 
+- open `localhost:8080` on your browser
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+if you want to change BASE API in frontend, goto file `src\main.js` and change \
+`window.BASE_API = 'http://localhost:8000/v1/'`
+
+##Run Frontend Unit Testing
+Run testing by this command \
+`npm run test`

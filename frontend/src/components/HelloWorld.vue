@@ -2,7 +2,7 @@
   <div class="hello">
     <div class="row">
       <div class="col-md-8">
-        <h3>List Of Vehicles</h3>
+        <h3 id="titleOfList">List Of Vehicles</h3>
         <b-table show-empty striped hover filter-debounce="" :items="list.data" :fields="fields" class="mt-4">
           <template v-slot:cell(price)="data">
             $ {{data.value}}
@@ -19,8 +19,8 @@
         </b-table>
       </div>
       <div class="col-md-4">
-        <h3>Insert Vehicle</h3>
-        <b-form class="mt-4" @submit="save" @reset="onReset">
+        <h3 id="titleOfForm">Insert Vehicle</h3>
+        <b-form id="insertVehicleForm" class="mt-4" @submit="save" @reset="onReset">
           <b-form-group id="input-group-2" label="Vehicle Name:" label-for="input-2">
             <b-form-input
               id="input-2"
