@@ -35,6 +35,8 @@ class VehicleController extends ApiController
             });
         }
 
+        $query->orderBy('id','desc');
+
         return $this->respondPagination($request, $query->paginate($limit));
     }
 

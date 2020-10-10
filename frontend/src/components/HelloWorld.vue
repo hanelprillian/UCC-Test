@@ -174,9 +174,8 @@ export default {
         this.form.engine_displacement = (Math.pow(parseInt(this.form.bore), 2) * 0.7854 * parseInt(this.form.stroke) * parseInt(this.form.cylinders)).toFixed(2)
     },
 
-    onReset(evt) {
-      evt.preventDefault()
-      // Reset our form values
+    _resetForm()
+    {
       this.form._saving = false
       this.form.name = ''
       this.form.location = ''
@@ -187,6 +186,12 @@ export default {
       this.form.engine_power = 0
       this.form.price = 0
       this.form.displacement_unit = 1
+    },
+
+    onReset(evt) {
+      evt.preventDefault()
+      // Reset our form values
+      this._resetForm()
     },
     getData()
     {
@@ -220,7 +225,7 @@ export default {
       }).then(response =>
       {
         this.getData()
-        this.onReset()
+        this._resetForm()
         this.form._saving = false
       }).catch(error => {
         this.form._saving = false
