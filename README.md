@@ -12,7 +12,7 @@ Its my result for fullfill the UnderCapital test requirement
 
 - Clone `git clone git@github.com:hanelprillian/UCC-Test.git`
 - rename `.env.example` to `.env `
-- run `composer install`
+- make sure you already install **composer** (https://getcomposer.org/download/) on your machine, then run `composer install`
 - create database called `ucctest`
 
 ## Run Backend
